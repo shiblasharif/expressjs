@@ -8,7 +8,24 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://shiblasharif:poly123@cluster0.03srr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+    if (err) {
+        console.log("db connection error");
+    }
+    else
+    {
+        console.log("db connected");
+    }
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  //client.close();
+});
+
 app.get('/', (req, res) => {
+    client.db("muchiii").collection("blllllaahh").insertOne({key:"value"});
   res.send('Hello World!')
 })
 app.get('/submit',(req,res) =>{
